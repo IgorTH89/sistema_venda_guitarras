@@ -5,14 +5,16 @@ public class GuitarSpec {
     private Type type;
     private Wood back_wood;
     private Wood top_wood;
+    private int numStrings;
     
     //Construtor
-    public GuitarSpec(Builder builder, String model, Type type, Wood back_wood, Wood top_wood) {
+    public GuitarSpec(Builder builder, String model, Type type, Wood back_wood, Wood top_wood, int numStrings) {
         this.builder = builder;
         this.model = model;
         this.type = type;
         this.back_wood = back_wood;
         this.top_wood = top_wood;
+        this.numStrings = numStrings; 
     }
     
     //Getters e setters
@@ -55,8 +57,16 @@ public class GuitarSpec {
     public void setTop_wood(Wood top_wood) {
         this.top_wood = top_wood;
     }
+    
+    public int getNumStrings() {
+            return numStrings;
+    }
 
+    public void setNumStrings(int numStrings) {
+        this.numStrings = numStrings;
+    }
 
+    //Metodo de comparação
     public boolean matches(GuitarSpec otherSpec){
         if(builder != otherSpec.builder){
             return false;
@@ -77,4 +87,6 @@ public class GuitarSpec {
 
         return true;
     }
+
+    
 }
