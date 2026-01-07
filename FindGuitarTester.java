@@ -7,8 +7,7 @@ public class FindGuitarTester {
         initializeInventory(inventory);
 
         // Definindo a guitarra que o cliente procura
-        GuitarSpec what_you_like = new GuitarSpec(Builder.FENDER, "Stratocaster", Type.ELETRIC, Wood.ALDER, Wood.ALDER);
-
+        GuitarSpec what_you_like = new GuitarSpec(Builder.FENDER, "Stratocaster", Type.ELETRIC, Wood.ALDER, Wood.ALDER, 6);
         List matchingGuitars = inventory.search(what_you_like);
 
         if (!matchingGuitars.isEmpty()) {
@@ -30,12 +29,14 @@ public class FindGuitarTester {
 
     private static void initializeInventory(Inventory inventory) {
         inventory.add_guitar("V95693", "Stratocaster", Builder.FENDER, 
-                             Type.ELETRIC, Wood.ALDER, Wood.ALDER, 1499.95);
+                             Type.ELETRIC, Wood.ALDER, Wood.ALDER, 1499.95, 6);
         inventory.add_guitar("V95111", "Stratocaster", Builder.FENDER, 
-                             Type.ELETRIC, Wood.ALDER, Wood.ALDER, 1549.95);
+                             Type.ELETRIC, Wood.ALDER, Wood.ALDER, 1549.95, 6);;
         inventory.add_guitar("8276550", "D-28", Builder.MARTIN, 
-                             Type.ACOUSTIC, Wood.BRAZILIAN_ROSEWOOD, Wood.ADIRONDACK, 3995.95);
-        inventory.add_guitar("T00123", "Telecaster", Builder.FENDER, Type.ELETRIC, Wood.MAPLE, Wood.MAPLE, 1100.50);
-        inventory.add_guitar("11227", "D-28", Builder.MARTIN, Type.ACOUSTIC, Wood.BRAZILIAN_ROSEWOOD, Wood.BRAZILIAN_ROSEWOOD, 3995.95);                             
+                             Type.ACOUSTIC, Wood.BRAZILIAN_ROSEWOOD, Wood.ADIRONDACK, 3995.95, 12);
+        inventory.add_guitar("T00123", "Telecaster", Builder.FENDER, 
+                            Type.ELETRIC, Wood.MAPLE, Wood.MAPLE, 1100.50, 12);
+        inventory.add_guitar("11227", "D-28", Builder.MARTIN, 
+                            Type.ACOUSTIC, Wood.BRAZILIAN_ROSEWOOD, Wood.BRAZILIAN_ROSEWOOD, 3995.95, 12);                             
     }
 }
