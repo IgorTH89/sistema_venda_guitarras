@@ -1,21 +1,12 @@
 public class Guitar {
-    //Classe mãe da aplicação do Rick
-    private String serial_number, model;
-    Builder builder;
-    Type type;
-    Wood back_wood;
-    Wood top_wood;
+    private String serial_number;
     private double price;
-
-    public Guitar(String serial_number, String model, Builder builder, Type type, Wood back_wood, Wood top_wood,
-            double price) {
+    private GuitarSpec spec;
+    
+    public Guitar(String serial_number, double price, GuitarSpec spec) {
         this.serial_number = serial_number;
-        this.model = model;
-        this.builder = builder;
-        this.type = type;
-        this.back_wood = back_wood;
-        this.top_wood = top_wood;
         this.price = price;
+        this.spec = spec;
     }
 
     public String getSerial_number() {
@@ -26,46 +17,6 @@ public class Guitar {
         this.serial_number = serial_number;
     }
 
-    public Builder getBuilder() {
-        return builder;
-    }
-
-    public void setBuilder(Builder builder) {
-        this.builder = builder;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public Wood getBack_wood() {
-        return back_wood;
-    }
-
-    public void setBack_wood(Wood back_wood) {
-        this.back_wood = back_wood;
-    }
-
-    public Wood getTop_wood() {
-        return top_wood;
-    }
-
-    public void setTop_wood(Wood top_wood) {
-        this.top_wood = top_wood;
-    }
-
     public double getPrice() {
         return price;
     }
@@ -74,5 +25,14 @@ public class Guitar {
         this.price = price;
     }
 
+    public GuitarSpec getSpec() {
+        return spec;
+    }
+
+    public void setSpec(GuitarSpec spec) {
+        this.spec = spec;
+    }
+
+    
     
 }
