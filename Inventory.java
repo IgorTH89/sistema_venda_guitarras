@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -9,7 +10,8 @@ public class Inventory {
     }
 
     public void add_guitar(String serial_number, String model, Builder builder, Type type, Wood back_wood, Wood top_wood, double price) {
-        Guitar guitar = new Guitar(serial_number, model, builder, type, back_wood, top_wood, price);
+        GuitarSpec spec = new  GuitarSpec(builder, model, type, back_wood, top_wood);
+        Guitar guitar = new Guitar(serial_number, price, spec);
         guitars.add(guitar);
     }
 
@@ -22,28 +24,33 @@ public class Inventory {
         return null;
     }
 
-    public List<Guitar> search(Guitar searchGuitar) {
-        List<Guitar> matchingGuitars = new LinkedList<Guitar>();
+    public List search(GuitarSpec searchSpec) {
+        List matchingGuitars = new LinkedList();
 
-        for (Guitar guitar : guitars) {
-            // Comparação de Modelo (ignorando maiúsculas/minúsculas e nulos)
-            String model = searchGuitar.getModel();
-            if ((model != null) && (!model.isEmpty()) && 
-                (!model.toLowerCase().equals(guitar.getModel().toLowerCase()))) {
+        for (Iterator i = guitars.iterator(); i.hasNext();) {
+            Guitar guitar = (Guitar)i.next();
+            GuitarSpec guitarSpec = guitar.getSpec();
+            
+            //Comparação do Builder
+            if(searchSpec.getBuilder() != guitarSpec.getBuilder()){
                 continue;
             }
             
-            // Comparação de Builder
-            if (searchGuitar.getBuilder() != guitar.getBuilder()) continue;
-
-            // Comparação de Tipo e Madeiras
-            if (searchGuitar.getType() != guitar.getType()){
+            // Comparação de Modelo (ignorando maiúsculas/minúsculas e nulos)
+            String model = searchSpec.getModel().toLowerCase();
+            if ((model != null) && (!model.equals("")) && 
+                (!model.equals(guitarSpec.getModel().toLowerCase()))) {
                 continue;
             }
-            if (searchGuitar.getBack_wood() != guitar.getBack_wood()){
+            
+            // Comparação de Tipo e Madeiras
+            if (searchSpec.getType() != guitarSpec.getType()){
+                continue;
+            }
+            if (searchSpec.getBack_wood() != guitarSpec.getBack_wood()){
                 continue;
             } 
-            if (searchGuitar.getTop_wood() != guitar.getTop_wood()){
+            if (searchSpec.getTop_wood() != guitarSpec.getTop_wood()){
                 continue;
             } 
 
