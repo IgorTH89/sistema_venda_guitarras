@@ -78,6 +78,9 @@ public class GuitarSpec {
         if(type != otherSpec.type){
             return false;
         }
+        if(numStrings != otherSpec.numStrings){
+            return false;
+        }
         if(back_wood != otherSpec.back_wood){
             return false;
         }
