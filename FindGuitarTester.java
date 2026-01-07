@@ -1,3 +1,4 @@
+import java.util.Iterator;
 import java.util.List;
 
 public class FindGuitarTester {
@@ -6,18 +7,20 @@ public class FindGuitarTester {
         initializeInventory(inventory);
 
         // Definindo a guitarra que o cliente procura
-        Guitar what_you_like = new Guitar("", "Stratocaster", Builder.FENDER, 
-                                          Type.ELETRIC, Wood.ALDER, Wood.ALDER, 0.0);
+        GuitarSpec what_you_like = new GuitarSpec(Builder.FENDER, "Stratocaster", Type.ELETRIC, Wood.ALDER, Wood.ALDER);
 
-        List<Guitar> guitarrasAdequadas = inventory.search(what_you_like);
+        List matchingGuitars = inventory.search(what_you_like);
 
-        if (!guitarrasAdequadas.isEmpty()) {
+        if (!matchingGuitars.isEmpty()) {
             System.out.println("Talvez você goste destas guitarras:");
-            for (Guitar guitar : guitarrasAdequadas) {
-                System.out.println("Temos a " + guitar.getBuilder() + " " + 
-                    guitar.getModel() + " " + guitar.getType() + " guitar:\n " + 
-                    guitar.getBack_wood() + " na traseira e dos lados, \n " + 
-                    guitar.getTop_wood() + " no tampo. \nEla pode ser sua por apenas US$" +
+            for (Iterator i = matchingGuitars.iterator(); i.hasNext();) {
+                Guitar guitar = (Guitar)i.next();
+                GuitarSpec spec = guitar.getSpec();
+                
+                System.out.println("Temos a " + spec.getBuilder() + " " + 
+                    spec.getModel() + " " + spec.getType() + " guitar:\n " + 
+                    spec.getBack_wood() + " na traseira e dos lados, \n " + 
+                    spec.getTop_wood() + " no tampo. \nEla pode ser sua por apenas US$" +
                     guitar.getPrice() + "!\n --");
             }
         } else {
@@ -29,8 +32,10 @@ public class FindGuitarTester {
         inventory.add_guitar("V95693", "Stratocaster", Builder.FENDER, 
                              Type.ELETRIC, Wood.ALDER, Wood.ALDER, 1499.95);
         inventory.add_guitar("V95111", "Stratocaster", Builder.FENDER, 
-                             Type.ELETRIC, Wood.ALDER, Wood.ALDER, 1200.00);
+                             Type.ELETRIC, Wood.ALDER, Wood.ALDER, 1549.95);
         inventory.add_guitar("8276550", "D-28", Builder.MARTIN, 
                              Type.ACOUSTIC, Wood.BRAZILIAN_ROSEWOOD, Wood.ADIRONDACK, 3995.95);
+        inventory.add_guitar("T00123", "Telecaster", Builder.FENDER, Type.ELETRIC, Wood.MAPLE, Wood.MAPLE, 1100.50);
+        inventory.add_guitar("11227", "D-28", Builder.MARTIN, Type.ACOUSTIC, Wood.BRAZILIAN_ROSEWOOD, Wood.BRAZILIAN_ROSEWOOD, 3995.95);                             
     }
 }
