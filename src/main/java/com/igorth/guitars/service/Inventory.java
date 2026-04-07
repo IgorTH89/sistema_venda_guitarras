@@ -1,6 +1,9 @@
+package com.igorth.guitars.service
+
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import com.igorth.guitars.model.Guitar; 
 
 public class Inventory {
     private List<Guitar> guitars;
