@@ -1,3 +1,5 @@
+package com.igorth.guitars.model
+
 public class GuitarSpec {
     //Especificações da guitarrra
     private Builder builder;
