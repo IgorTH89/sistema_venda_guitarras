@@ -1,3 +1,5 @@
+package com.igorth.guitars.enums
+
 public enum Type {
     ACOUSTIC, ELETRIC;
 
