@@ -1,3 +1,5 @@
+package com.igorth.guitars.model
+
 public class Guitar {
     private String serial_number;
     private double price;
